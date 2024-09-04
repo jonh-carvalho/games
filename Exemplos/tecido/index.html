@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Tecido - Jogos Digitais</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Jogos Digitais</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Exemplos</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../" class="dropdown-item">Index</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Tecido</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#tecido" class="nav-link">Tecido</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="tecido">Tecido</h1>
+<p>Para criar uma cena no Blender onde um tecido (um plano) cai sobre um cubo usando simulação de física de pano (cloth), siga estes passos:</p>
+<h3 id="passo-1-configuracao-da-cena-basica">Passo 1: Configuração da Cena Básica</h3>
+<ol>
+<li><strong>Abra o Blender</strong>.</li>
+<li><strong>Remova os objetos padrão</strong> (geralmente um cubo). Selecione o cubo, pressione <code>X</code> e clique em "Delete".</li>
+<li>
+<p><strong>Adicione um novo cubo</strong>:</p>
+</li>
+<li>
+<p>Pressione <code>Shift + A</code> para abrir o menu de adição.</p>
+</li>
+<li>Selecione <code>Mesh &gt; Cube</code>.</li>
+<li>Posicione o cubo em <code>Z = 0</code> para ficar na superfície da grade.</li>
+<li>
+<p><strong>Adicione um plano (Plane) para ser o tecido</strong>:</p>
+</li>
+<li>
+<p>Pressione <code>Shift + A</code> novamente e selecione <code>Mesh &gt; Plane</code>.</p>
+</li>
+<li>Posicione o plano acima do cubo (em <code>Z = 2</code> por exemplo).</li>
+</ol>
+<h3 id="passo-2-configuracao-da-fisica-do-cubo">Passo 2: Configuração da Física do Cubo</h3>
+<ol>
+<li><strong>Selecione o cubo</strong>.</li>
+<li>No painel de propriedades, vá para a aba de <code>Physics</code> (ícone de círculo com pontos dentro) e clique em <code>Collision</code>.</li>
+<li>Isso faz com que o cubo interaja com o tecido.</li>
+</ol>
+<h3 id="passo-3-configuracao-da-fisica-do-tecido">Passo 3: Configuração da Física do Tecido</h3>
+<ol>
+<li><strong>Selecione o plano</strong> (que será o tecido).</li>
+<li>No painel de propriedades, vá para a aba de <code>Physics</code> e clique em <code>Cloth</code>.</li>
+<li>Aqui você pode ajustar as propriedades como massa, esticamento, flexão, etc., para definir o comportamento do tecido.</li>
+</ol>
+<h3 id="passo-4-ajuste-da-resolucao-do-plano-opcional">Passo 4: Ajuste da Resolução do Plano (Opcional)</h3>
+<ol>
+<li><strong>Subdivida o plano</strong> para que o tecido tenha mais pontos para a simulação:</li>
+<li>Selecione o plano.</li>
+<li>Pressione <code>Tab</code> para entrar no Modo de Edição.</li>
+<li>Pressione <code>Right Click</code> e selecione <code>Subdivide</code>.</li>
+<li>No painel inferior esquerdo, aumente o número de cortes para dar mais detalhe ao tecido.</li>
+<li>Pressione <code>Tab</code> novamente para sair do Modo de Edição.</li>
+</ol>
+<h3 id="passo-5-simulacao">Passo 5: Simulação</h3>
+<ol>
+<li><strong>Inicie a simulação</strong>:</li>
+<li>Pressione <code>Space</code> ou <code>Shift + Space</code> para iniciar a animação.</li>
+<li>O plano (tecido) deve cair sobre o cubo e reagir como um tecido real.</li>
+</ol>
+<h3 id="passo-6-ajustes-finais">Passo 6: Ajustes Finais</h3>
+<ol>
+<li><strong>Ajuste o comportamento</strong> da simulação na aba <code>Cloth</code> se necessário.</li>
+<li><strong>Adicione uma superfície</strong> de chão (novo plano abaixo do cubo) e marque como <code>Collision</code> para que o tecido não caia indefinidamente.</li>
+</ol>
+<h3 id="passo-7-renderizacao">Passo 7: Renderização</h3>
+<ol>
+<li><strong>Configure a iluminação</strong> e a câmera para a cena.</li>
+<li><strong>Renderize a animação</strong> ou um frame específico da queda do tecido.</li>
+</ol>
+<p>Essa configuração simples deve permitir que o tecido caia e se deforme ao colidir com o cubo, criando uma cena realista de simulação física no Blender.</p>
+<p>Para criar essa cena no Blender usando um script Python, você pode seguir o roteiro abaixo. Esse script cria um cubo, adiciona um plano como tecido, configura a simulação de física e executa a animação.</p>
+<pre><code class="language-python">import bpy
+
+# Limpa a cena padrão
+bpy.ops.object.select_all(action='SELECT')
+bpy.ops.object.delete(use_global=False)
+
+# Adiciona um cubo
+bpy.ops.mesh.primitive_cube_add(size=2, location=(0, 0, 1))
+
+# Pega o objeto recém-criado (o cubo)
+cube = bpy.context.object
+
+# Adiciona a física de colisão ao cubo
+bpy.ops.object.modifier_add(type='COLLISION')
+
+# Adiciona um plano (plane) para ser o tecido
+bpy.ops.mesh.primitive_plane_add(size=4, location=(0, 0, 4))
+plane = bpy.context.object
+
+# Subdivide o plano para aumentar a resolução
+bpy.ops.object.mode_set(mode='EDIT')
+bpy.ops.mesh.subdivide(number_cuts=10)
+bpy.ops.object.mode_set(mode='OBJECT')
+
+# Adiciona a física de cloth ao plano
+bpy.ops.object.modifier_add(type='CLOTH')
+
+# Configurações adicionais para a simulação de tecido
+cloth_mod = plane.modifiers[&quot;Cloth&quot;]
+cloth_mod.settings.quality = 5  # Qualidade da simulação
+cloth_mod.settings.mass = 0.3  # Massa do tecido
+
+# Adiciona um chão abaixo do cubo para evitar queda infinita do tecido
+bpy.ops.mesh.primitive_plane_add(size=10, location=(0, 0, 0))
+floor = bpy.context.object
+
+# Adiciona física de colisão ao chão
+bpy.ops.object.modifier_add(type='COLLISION')
+
+# Configurações de cena e animação
+bpy.context.scene.frame_start = 1
+bpy.context.scene.frame_end = 250
+
+# Executa a animação (opcional, se você quiser simular direto)
+bpy.ops.ptcache.bake_all(bake=True)
+</code></pre>
+<h3 id="explicacao-do-codigo">Explicação do Código:</h3>
+<ol>
+<li>
+<p><strong>Limpeza da Cena</strong>:</p>
+</li>
+<li>
+<p>O código inicial limpa todos os objetos da cena padrão.</p>
+</li>
+<li>
+<p><strong>Criação e Configuração do Cubo</strong>:</p>
+</li>
+<li>
+<p>Adiciona um cubo na cena, o eleva do solo e adiciona um modificador de colisão para que ele interaja com o tecido.</p>
+</li>
+<li>
+<p><strong>Criação e Configuração do Tecido</strong>:</p>
+</li>
+<li>
+<p>Adiciona um plano, o posiciona acima do cubo, subdivide para melhorar a qualidade da simulação e aplica o modificador <code>Cloth</code> para ativar a simulação de tecido.</p>
+</li>
+<li>
+<p><strong>Criação do Chão</strong>:</p>
+</li>
+<li>
+<p>Adiciona um plano abaixo do cubo para agir como chão e garantir que o tecido não caia indefinidamente.</p>
+</li>
+<li>
+<p><strong>Configuração de Simulação</strong>:</p>
+</li>
+<li>
+<p>Define o intervalo de quadros para a animação e realiza a simulação imediatamente (o <code>bake</code>).</p>
+</li>
+</ol>
+<h3 id="como-executar-o-script">Como Executar o Script:</h3>
+<ol>
+<li><strong>Abra o Blender</strong>.</li>
+<li><strong>Vá para o Editor de Textos</strong> (<code>Scripting</code>) no topo.</li>
+<li><strong>Crie um novo script</strong> e cole o código acima.</li>
+<li><strong>Clique em "Run Script"</strong> para executar e criar a cena automaticamente.</li>
+</ol>
+<p>Isso criará a simulação no Blender conforme descrito.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
