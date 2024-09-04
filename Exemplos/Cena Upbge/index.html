@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Cena Upbge - Jogos Digitais</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Jogos Digitais</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Exemplos</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../" class="dropdown-item">Index</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Cena Upbge</a>
+</li>
+                                    
+<li>
+    <a href="../tecido/" class="dropdown-item">Tecido</a>
+</li>
+                                    
+<li>
+    <a href="../visualiza%C3%A7%C3%A3o/" class="dropdown-item">Visualização</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../tecido/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            
+            
+            
+            
+            
+            <li class="nav-item" data-bs-level="1"><a href="#baseado-no-codigo-anterior-altere-os-dados-json-para-que-todos-os-objetos-fiquem-no-mesmo-y-e-z" class="nav-link">Baseado no código anterior altere os dados json para que todos os objetos fiquem no mesmo y e z</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#adicionar-no-script-uma-luz-que-simule-o-dia-ensolarado" class="nav-link">Adicionar no script uma luz que simule o dia ensolarado</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#adicionar-um-material-metalico-aos-objetos-do-cena-anterior" class="nav-link">Adicionar um material metálico aos objetos do cena anterior</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#adicionar-um-terreno" class="nav-link">Adicionar um terreno</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#adicionar-um-ceu" class="nav-link">Adicionar um céu</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p>Para enquadrar a câmera automaticamente com base nos dados carregados do JSON, você pode ajustar a posição e o ângulo da câmera dinamicamente no script Python. A ideia é calcular a posição média dos objetos ou o ponto central da cena e ajustar a câmera para enquadrar todos os objetos visíveis.</p>
+<h3 id="1-modificacao-do-script-python">1. Modificação do Script Python</h3>
+<p>Vamos modificar o script para que, após criar os objetos, a câmera seja posicionada e orientada automaticamente para enquadrar todos eles.</p>
+<h4 id="script-python-modificado">Script Python Modificado:</h4>
+<pre><code class="language-python">import bpy
+import json
+
+# Caminho para o arquivo JSON
+filepath = &quot;/caminho/para/o/arquivo/data.json&quot;
+
+# Função para carregar dados JSON
+def load_json(filepath):
+    with open(filepath, 'r') as file:
+        return json.load(file)
+
+# Função para criar objetos a partir dos dados, ajustando altura
+def create_objects_from_data(data):
+    objects = []
+    for item in data:
+        # Criar o objeto cubo
+        bpy.ops.mesh.primitive_cube_add(size=1, location=(item['x'], item['y'], item['z']))
+        obj = bpy.context.object
+
+        # Definir nome do objeto
+        obj.name = item['name']
+
+        # Ajustar altura do cubo (alongar no eixo Z)
+        obj.scale.z = item['height']
+
+        # Adicionar o objeto à lista
+        objects.append(obj)
+
+    return objects
+
+# Função para posicionar a câmera automaticamente
+def position_camera(objects):
+    # Calcular a posição média dos objetos
+    x_coords = [obj.location.x for obj in objects]
+    y_coords = [obj.location.y for obj in objects]
+    z_coords = [obj.location.z + obj.scale.z/2 for obj in objects]  # Considerando altura
+
+    x_center = sum(x_coords) / len(x_coords)
+    y_center = sum(y_coords) / len(y_coords)
+    z_max = max(z_coords)  # Ponto mais alto
+
+    # Ajustar posição da câmera
+    camera = bpy.data.objects['Camera']
+    camera.location.x = x_center
+    camera.location.y = y_center - max(y_coords) * 2  # Distância suficiente para ver todos os objetos
+    camera.location.z = z_max * 1.5  # Eleva a câmera para ver todos os objetos
+
+    # Apontar a câmera para o centro dos objetos
+    camera.rotation_euler = (1.1, 0, 0)  # Ajuste manual da rotação (X, Y, Z)
+    camera.data.lens = 35  # Opcional: ajustar o campo de visão da câmera
+
+# Carregar dados e criar objetos
+data = load_json(filepath)
+objects = create_objects_from_data(data)
+
+# Posicionar a câmera com base nos objetos
+position_camera(objects)
+</code></pre>
+<h3 id="2-explicacao-do-script">2. Explicação do Script:</h3>
+<ul>
+<li><strong>Carregar e Criar Objetos:</strong> O script cria os objetos e retorna uma lista dos objetos criados.</li>
+<li><strong>Calcular o Centro:</strong> Calcula a posição média dos objetos (<code>x_center</code>, <code>y_center</code>) e o ponto mais alto (<code>z_max</code>).</li>
+<li><strong>Posicionar a Câmera:</strong> Posiciona a câmera no centro dos objetos e ajusta sua altura para garantir que todos os objetos sejam visíveis.</li>
+<li><strong>Apontar a Câmera:</strong> A câmera é orientada para olhar para o centro da cena.</li>
+</ul>
+<h3 id="3-executar-o-script">3. Executar o Script</h3>
+<ol>
+<li><strong>Abra o Editor de Texto:</strong> No UPBGE, abra o Editor de Texto e cole o script modificado.</li>
+<li><strong>Executar o Script:</strong> Pressione "Run Script" para criar os objetos e posicionar a câmera automaticamente.</li>
+</ol>
+<h3 id="4-testar-no-modo-de-jogo">4. Testar no Modo de Jogo</h3>
+<ol>
+<li><strong>Entrar no Modo de Jogo:</strong> Pressione <code>P</code> para entrar no modo de jogo e verifique se a câmera está enquadrando todos os objetos corretamente.</li>
+</ol>
+<h3 id="5-ajustes-finais">5. Ajustes Finais</h3>
+<ul>
+<li><strong>Campo de Visão:</strong> Você pode ajustar o <code>camera.data.lens</code> para aumentar ou diminuir o campo de visão da câmera.</li>
+<li><strong>Rotação da Câmera:</strong> Se necessário, ajuste manualmente a rotação da câmera para enquadrar melhor os objetos.</li>
+</ul>
+<p>Agora, sua cena 3D no UPBGE não só cria objetos baseados nos dados JSON, mas também posiciona a câmera automaticamente para que todos os objetos sejam visíveis!</p>
+<h1 id="baseado-no-codigo-anterior-altere-os-dados-json-para-que-todos-os-objetos-fiquem-no-mesmo-y-e-z">Baseado no código anterior altere os dados json para que todos os objetos fiquem no mesmo y e z</h1>
+<p>Para modificar o JSON de modo que todos os objetos fiquem no mesmo <code>y</code> e <code>z</code>, você pode ajustar os valores desses eixos no arquivo JSON. Vou fornecer um exemplo de JSON atualizado onde todos os objetos têm a mesma coordenada <code>y</code> e <code>z</code>.</p>
+<h3 id="1-exemplo-de-datajson-com-y-e-z-fixos">1. Exemplo de <code>data.json</code> com <code>y</code> e <code>z</code> fixos</h3>
+<pre><code class="language-json">[
+  {&quot;name&quot;: &quot;Item1&quot;, &quot;x&quot;: 1, &quot;y&quot;: 0, &quot;z&quot;: 0, &quot;height&quot;: 2.5},
+  {&quot;name&quot;: &quot;Item2&quot;, &quot;x&quot;: 4, &quot;y&quot;: 0, &quot;z&quot;: 0, &quot;height&quot;: 1.8},
+  {&quot;name&quot;: &quot;Item3&quot;, &quot;x&quot;: 7, &quot;y&quot;: 0, &quot;z&quot;: 0, &quot;height&quot;: 3.0},
+  {&quot;name&quot;: &quot;Item4&quot;, &quot;x&quot;: 10, &quot;y&quot;: 0, &quot;z&quot;: 0, &quot;height&quot;: 2.0},
+  {&quot;name&quot;: &quot;Item5&quot;, &quot;x&quot;: 13, &quot;y&quot;: 0, &quot;z&quot;: 0, &quot;height&quot;: 1.5}
+]
+</code></pre>
+<h3 id="2-explicacao-do-json">2. Explicação do JSON:</h3>
+<ul>
+<li><strong><code>x</code>:</strong> As posições <code>x</code> variam, o que significa que os objetos serão dispostos ao longo do eixo X.</li>
+<li><strong><code>y</code>:</strong> Todos os valores de <code>y</code> são <code>0</code>, então todos os objetos estarão alinhados ao longo do eixo Y.</li>
+<li><strong><code>z</code>:</strong> Todos os valores de <code>z</code> são <code>0</code>, então todos os objetos serão colocados na mesma altura inicial. A altura real dos objetos será determinada pelo valor <code>height</code>.</li>
+</ul>
+<h3 id="3-usar-o-json-atualizado-no-script-python">3. Usar o JSON Atualizado no Script Python</h3>
+<p>Você pode usar o JSON atualizado com o script anterior sem nenhuma modificação. O script criará os objetos no UPBGE, e todos estarão alinhados ao longo do eixo X, com a mesma altura inicial em <code>z = 0</code> e <code>y = 0</code>.</p>
+<h3 id="4-executar-o-script">4. Executar o Script</h3>
+<ol>
+<li><strong>Certifique-se de que o JSON atualizado esteja salvo</strong> com os valores acima.</li>
+<li><strong>Execute o script Python</strong> como descrito anteriormente para criar os objetos e posicionar a câmera.</li>
+</ol>
+<h3 id="5-visualizar-os-objetos">5. Visualizar os Objetos</h3>
+<p>No modo de jogo (<code>P</code>), você verá todos os objetos alinhados em uma linha ao longo do eixo X, com diferentes alturas, mas na mesma posição <code>y</code> e <code>z</code>.</p>
+<p>Se precisar de mais ajustes ou tiver outras perguntas, estou à disposição para ajudar!</p>
+<h1 id="adicionar-no-script-uma-luz-que-simule-o-dia-ensolarado">Adicionar no script uma luz que simule o dia ensolarado</h1>
+<p>Para adicionar uma luz que simule um dia ensolarado na cena, vamos utilizar uma luz do tipo <code>Sun</code> no UPBGE. A luz do tipo <code>Sun</code> emite luz paralela, semelhante à luz solar, e é ideal para iluminar toda a cena de forma uniforme.</p>
+<h3 id="1-modificacao-do-script-python_1">1. Modificação do Script Python</h3>
+<p>Aqui está o script modificado para incluir a criação de uma luz solar (<code>Sun</code>) junto com os objetos e o posicionamento da câmera.</p>
+<h4 id="script-python-modificado-com-luz-solar">Script Python Modificado com Luz Solar:</h4>
+<pre><code class="language-python">import bpy
+import json
+
+# Caminho para o arquivo JSON
+filepath = &quot;/caminho/para/o/arquivo/data.json&quot;
+
+# Função para carregar dados JSON
+def load_json(filepath):
+    with open(filepath, 'r') as file:
+        return json.load(file)
+
+# Função para criar objetos a partir dos dados, ajustando altura
+def create_objects_from_data(data):
+    objects = []
+    for item in data:
+        # Criar o objeto cubo
+        bpy.ops.mesh.primitive_cube_add(size=1, location=(item['x'], item['y'], item['z']))
+        obj = bpy.context.object
+
+        # Definir nome do objeto
+        obj.name = item['name']
+
+        # Ajustar altura do cubo (alongar no eixo Z)
+        obj.scale.z = item['height']
+
+        # Adicionar o objeto à lista
+        objects.append(obj)
+
+    return objects
+
+# Função para posicionar a câmera automaticamente
+def position_camera(objects):
+    # Calcular a posição média dos objetos
+    x_coords = [obj.location.x for obj in objects]
+    y_coords = [obj.location.y for obj in objects]
+    z_coords = [obj.location.z + obj.scale.z/2 for obj in objects]  # Considerando altura
+
+    x_center = sum(x_coords) / len(x_coords)
+    y_center = sum(y_coords) / len(y_coords)
+    z_max = max(z_coords)  # Ponto mais alto
+
+    # Ajustar posição da câmera
+    camera = bpy.data.objects['Camera']
+    camera.location.x = x_center
+    camera.location.y = y_center - max(y_coords) * 2  # Distância suficiente para ver todos os objetos
+    camera.location.z = z_max * 1.5  # Eleva a câmera para ver todos os objetos
+
+    # Apontar a câmera para o centro dos objetos
+    camera.rotation_euler = (1.1, 0, 0)  # Ajuste manual da rotação (X, Y, Z)
+    camera.data.lens = 35  # Opcional: ajustar o campo de visão da câmera
+
+# Função para adicionar uma luz solar (Sun)
+def add_sun_light():
+    # Adicionar a luz do tipo Sun
+    bpy.ops.object.light_add(type='SUN', radius=1, location=(10, -10, 10))
+    sun = bpy.context.object
+
+    # Configurar a rotação da luz para simular um dia ensolarado
+    sun.rotation_euler = (0.7854, 0, 0.7854)  # Inclina a luz para simular o sol no céu
+
+    # Ajustar a intensidade e cor da luz
+    sun.data.energy = 5  # Intensidade da luz solar
+    sun.data.color = (1, 1, 0.98)  # Levemente amarelada para simular o sol
+
+# Carregar dados e criar objetos
+data = load_json(filepath)
+objects = create_objects_from_data(data)
+
+# Posicionar a câmera com base nos objetos
+position_camera(objects)
+
+# Adicionar uma luz solar à cena
+add_sun_light()
+</code></pre>
+<h3 id="2-explicacao-das-modificacoes">2. Explicação das Modificações:</h3>
+<ul>
+<li><strong>Adicionar Luz Solar (<code>Sun</code>):</strong> A função <code>add_sun_light()</code> adiciona uma luz do tipo <code>Sun</code> à cena.</li>
+<li><strong>Posicionamento da Luz:</strong> A luz é posicionada no ponto <code>(10, -10, 10)</code>, o que simula o sol vindo de um ângulo.</li>
+<li><strong>Rotação da Luz:</strong> A rotação da luz é ajustada para simular a iluminação solar em um dia ensolarado.</li>
+<li><strong>Configuração da Intensidade e Cor:</strong> A intensidade da luz é aumentada para <code>5</code>, e a cor é ajustada para um tom levemente amarelado, que é típico da luz solar.</li>
+</ul>
+<h3 id="3-executar-o-script_1">3. Executar o Script</h3>
+<ol>
+<li><strong>Abra o Editor de Texto:</strong> No UPBGE, abra o Editor de Texto e cole o script modificado.</li>
+<li><strong>Execute o Script:</strong> Pressione "Run Script" para criar os objetos, posicionar a câmera e adicionar a luz solar.</li>
+</ol>
+<h3 id="4-testar-no-modo-de-jogo_1">4. Testar no Modo de Jogo</h3>
+<ol>
+<li><strong>Entrar no Modo de Jogo:</strong> Pressione <code>P</code> para entrar no modo de jogo e verifique como a luz solar ilumina a cena.</li>
+</ol>
+<h3 id="5-ajustes-finais_1">5. Ajustes Finais</h3>
+<ul>
+<li><strong>Intensidade da Luz:</strong> Se a cena estiver muito clara ou escura, ajuste <code>sun.data.energy</code> para aumentar ou diminuir a intensidade da luz solar.</li>
+<li><strong>Rotação da Luz:</strong> Ajuste <code>sun.rotation_euler</code> se quiser alterar o ângulo de incidência da luz.</li>
+</ul>
+<p>Agora sua cena 3D no UPBGE simula um dia ensolarado, com luz solar natural iluminando todos os objetos!</p>
+<h1 id="adicionar-um-material-metalico-aos-objetos-do-cena-anterior">Adicionar um material metálico aos objetos do cena anterior</h1>
+<p>Para adicionar um material metálico aos objetos na cena do UPBGE, você pode modificar o script para incluir a criação e aplicação de um material com propriedades metálicas para cada objeto. Abaixo está o script atualizado que inclui essa funcionalidade.</p>
+<h3 id="1-modificacao-do-script-python_2">1. Modificação do Script Python</h3>
+<p>Vamos adicionar uma função para criar um material metálico e aplicá-lo aos objetos criados a partir dos dados JSON.</p>
+<h4 id="script-python-modificado-com-material-metalico">Script Python Modificado com Material Metálico:</h4>
+<pre><code class="language-python">import bpy
+import json
+
+# Caminho para o arquivo JSON
+filepath = &quot;/caminho/para/o/arquivo/data.json&quot;
+
+# Função para carregar dados JSON
+def load_json(filepath):
+    with open(filepath, 'r') as file:
+        return json.load(file)
+
+# Função para criar e aplicar um material metálico aos objetos
+def create_metallic_material():
+    # Criar um novo material
+    material = bpy.data.materials.new(name=&quot;MetallicMaterial&quot;)
+
+    # Ativar o uso de nodes
+    material.use_nodes = True
+
+    # Obter o nó de Principled BSDF (nó padrão)
+    principled_bsdf = material.node_tree.nodes.get(&quot;Principled BSDF&quot;)
+
+    # Configurar as propriedades do material para ser metálico
+    principled_bsdf.inputs['Metallic'].default_value = 1.0  # Valor metálico máximo
+    principled_bsdf.inputs['Roughness'].default_value = 0.3  # Controle de rugosidade (menos rugoso = mais brilhante)
+    principled_bsdf.inputs['Base Color'].default_value = (0.8, 0.8, 0.8, 1)  # Cor base (cinza claro)
+
+    return material
+
+# Função para criar objetos a partir dos dados, ajustando altura e aplicando material
+def create_objects_from_data(data, material):
+    objects = []
+    for item in data:
+        # Criar o objeto cubo
+        bpy.ops.mesh.primitive_cube_add(size=1, location=(item['x'], item['y'], item['z']))
+        obj = bpy.context.object
+
+        # Definir nome do objeto
+        obj.name = item['name']
+
+        # Ajustar altura do cubo (alongar no eixo Z)
+        obj.scale.z = item['height']
+
+        # Aplicar o material metálico ao objeto
+        if obj.data.materials:
+            obj.data.materials[0] = material
+        else:
+            obj.data.materials.append(material)
+
+        # Adicionar o objeto à lista
+        objects.append(obj)
+
+    return objects
+
+# Função para posicionar a câmera automaticamente
+def position_camera(objects):
+    # Calcular a posição média dos objetos
+    x_coords = [obj.location.x for obj in objects]
+    y_coords = [obj.location.y for obj in objects]
+    z_coords = [obj.location.z + obj.scale.z/2 for obj in objects]  # Considerando altura
+
+    x_center = sum(x_coords) / len(x_coords)
+    y_center = sum(y_coords) / len(y_coords)
+    z_max = max(z_coords)  # Ponto mais alto
+
+    # Ajustar posição da câmera
+    camera = bpy.data.objects['Camera']
+    camera.location.x = x_center
+    camera.location.y = y_center - max(y_coords) * 2  # Distância suficiente para ver todos os objetos
+    camera.location.z = z_max * 1.5  # Eleva a câmera para ver todos os objetos
+
+    # Apontar a câmera para o centro dos objetos
+    camera.rotation_euler = (1.1, 0, 0)  # Ajuste manual da rotação (X, Y, Z)
+    camera.data.lens = 35  # Opcional: ajustar o campo de visão da câmera
+
+# Função para adicionar uma luz solar (Sun)
+def add_sun_light():
+    # Adicionar a luz do tipo Sun
+    bpy.ops.object.light_add(type='SUN', radius=1, location=(10, -10, 10))
+    sun = bpy.context.object
+
+    # Configurar a rotação da luz para simular um dia ensolarado
+    sun.rotation_euler = (0.7854, 0, 0.7854)  # Inclina a luz para simular o sol no céu
+
+    # Ajustar a intensidade e cor da luz
+    sun.data.energy = 5  # Intensidade da luz solar
+    sun.data.color = (1, 1, 0.98)  # Levemente amarelada para simular o sol
+
+# Carregar dados e criar material metálico
+data = load_json(filepath)
+metallic_material = create_metallic_material()
+
+# Criar objetos e aplicar o material metálico
+objects = create_objects_from_data(data, metallic_material)
+
+# Posicionar a câmera com base nos objetos
+position_camera(objects)
+
+# Adicionar uma luz solar à cena
+add_sun_light()
+</code></pre>
+<h3 id="2-explicacao-das-modificacoes_1">2. Explicação das Modificações:</h3>
+<ul>
+<li>
+<p><strong>Criar Material Metálico:</strong> A função <code>create_metallic_material()</code> cria um novo material com propriedades metálicas, usando o shader <code>Principled BSDF</code>.</p>
+</li>
+<li>
+<p><strong>Metallic:</strong> Configurado para 1.0, que define o material como completamente metálico.</p>
+</li>
+<li><strong>Roughness:</strong> Configurado para 0.3, o que dá ao material uma aparência moderadamente brilhante.</li>
+<li><strong>Base Color:</strong> Definido como um cinza claro, que é típico para metais como o aço inoxidável.</li>
+<li><strong>Aplicar Material:</strong> Durante a criação dos objetos, o material metálico é aplicado a cada objeto.</li>
+</ul>
+<h3 id="3-executar-o-script_2">3. Executar o Script</h3>
+<ol>
+<li><strong>Abra o Editor de Texto:</strong> No UPBGE, abra o Editor de Texto e cole o script modificado.</li>
+<li><strong>Execute o Script:</strong> Pressione "Run Script" para criar os objetos, posicionar a câmera, adicionar a luz solar e aplicar o material metálico.</li>
+</ol>
+<h3 id="4-testar-no-modo-de-jogo_2">4. Testar no Modo de Jogo</h3>
+<ol>
+<li><strong>Entrar no Modo de Jogo:</strong> Pressione <code>P</code> para entrar no modo de jogo e visualizar os objetos com o material metálico aplicado.</li>
+</ol>
+<h3 id="5-ajustes-finais_2">5. Ajustes Finais</h3>
+<ul>
+<li><strong>Cor do Material:</strong> Se desejar, você pode ajustar a <code>Base Color</code> do material metálico para diferentes tons de metal, como cobre, ouro, etc.</li>
+<li><strong>Roughness:</strong> Aumentar ou diminuir o valor de <code>Roughness</code> afetará o brilho e a nitidez dos reflexos.</li>
+</ul>
+<p>Agora, os objetos na sua cena 3D no UPBGE terão um material metálico aplicado, com iluminação simulando um dia ensolarado.</p>
+<h1 id="adicionar-um-terreno">Adicionar um terreno</h1>
+<p>Para adicionar um terreno na sua cena 3D no UPBGE, você pode criar um plano grande que representará o chão da cena e aplicar um material a esse plano para dar a aparência de terreno. Aqui está como você pode modificar o script para adicionar esse terreno.</p>
+<h3 id="1-modificacao-do-script-python_3">1. Modificação do Script Python</h3>
+<p>Vamos adicionar uma função para criar o terreno e aplicar um material básico a ele.</p>
+<h4 id="script-python-modificado-com-terreno">Script Python Modificado com Terreno:</h4>
+<pre><code class="language-python">import bpy
+import json
+
+# Caminho para o arquivo JSON
+filepath = &quot;/caminho/para/o/arquivo/data.json&quot;
+
+# Função para carregar dados JSON
+def load_json(filepath):
+    with open(filepath, 'r') as file:
+        return json.load(file)
+
+# Função para criar e aplicar um material metálico aos objetos
+def create_metallic_material():
+    material = bpy.data.materials.new(name=&quot;MetallicMaterial&quot;)
+    material.use_nodes = True
+
+    principled_bsdf = material.node_tree.nodes.get(&quot;Principled BSDF&quot;)
+    principled_bsdf.inputs['Metallic'].default_value = 1.0
+    principled_bsdf.inputs['Roughness'].default_value = 0.3
+    principled_bsdf.inputs['Base Color'].default_value = (0.8, 0.8, 0.8, 1)
+
+    return material
+
+# Função para criar objetos a partir dos dados, ajustando altura e aplicando material
+def create_objects_from_data(data, material):
+    objects = []
+    for item in data:
+        bpy.ops.mesh.primitive_cube_add(size=1, location=(item['x'], item['y'], item['z']))
+        obj = bpy.context.object
+
+        obj.name = item['name']
+        obj.scale.z = item['height']
+
+        if obj.data.materials:
+            obj.data.materials[0] = material
+        else:
+            obj.data.materials.append(material)
+
+        objects.append(obj)
+
+    return objects
+
+# Função para criar o terreno
+def create_terrain():
+    # Adicionar um plano que servirá como terreno
+    bpy.ops.mesh.primitive_plane_add(size=50, location=(0, 0, 0))
+    terrain = bpy.context.object
+
+    # Criar um material para o terreno
+    terrain_material = bpy.data.materials.new(name=&quot;TerrainMaterial&quot;)
+    terrain_material.use_nodes = True
+
+    # Obter o nó de Principled BSDF
+    principled_bsdf = terrain_material.node_tree.nodes.get(&quot;Principled BSDF&quot;)
+
+    # Configurar a cor e a rugosidade do terreno
+    principled_bsdf.inputs['Base Color'].default_value = (0.3, 0.2, 0.1, 1)  # Marrom
+    principled_bsdf.inputs['Roughness'].default_value = 0.8  # Mais rugoso
+
+    # Aplicar o material ao plano
+    if terrain.data.materials:
+        terrain.data.materials[0] = terrain_material
+    else:
+        terrain.data.materials.append(terrain_material)
+
+    return terrain
+
+# Função para posicionar a câmera automaticamente
+def position_camera(objects):
+    x_coords = [obj.location.x for obj in objects]
+    y_coords = [obj.location.y for obj in objects]
+    z_coords = [obj.location.z + obj.scale.z/2 for obj in objects]
+
+    x_center = sum(x_coords) / len(x_coords)
+    y_center = sum(y_coords) / len(y_coords)
+    z_max = max(z_coords)
+
+    camera = bpy.data.objects['Camera']
+    camera.location.x = x_center
+    camera.location.y = y_center - max(y_coords) * 2
+    camera.location.z = z_max * 1.5
+
+    camera.rotation_euler = (1.1, 0, 0)
+    camera.data.lens = 35
+
+# Função para adicionar uma luz solar (Sun)
+def add_sun_light():
+    bpy.ops.object.light_add(type='SUN', radius=1, location=(10, -10, 10))
+    sun = bpy.context.object
+
+    sun.rotation_euler = (0.7854, 0, 0.7854)
+    sun.data.energy = 5
+    sun.data.color = (1, 1, 0.98)
+
+# Carregar dados e criar material metálico
+data = load_json(filepath)
+metallic_material = create_metallic_material()
+
+# Criar o terreno
+terrain = create_terrain()
+
+# Criar objetos e aplicar o material metálico
+objects = create_objects_from_data(data, metallic_material)
+
+# Posicionar a câmera com base nos objetos
+position_camera(objects)
+
+# Adicionar uma luz solar à cena
+add_sun_light()
+</code></pre>
+<h3 id="2-explicacao-das-modificacoes_2">2. Explicação das Modificações:</h3>
+<ul>
+<li>
+<p><strong>Função <code>create_terrain</code>:</strong> Esta função cria um plano grande (tamanho 50) que serve como terreno.</p>
+</li>
+<li>
+<p><strong>Material do Terreno:</strong> Um material simples é criado e aplicado ao plano, com uma cor marrom e rugosidade alta para simular terra.</p>
+</li>
+<li><strong>Adição do Terreno na Cena:</strong> O terreno é criado antes dos objetos para garantir que os objetos sejam posicionados sobre ele.</li>
+</ul>
+<h3 id="3-executar-o-script_3">3. Executar o Script</h3>
+<ol>
+<li><strong>Abra o Editor de Texto:</strong> No UPBGE, abra o Editor de Texto e cole o script modificado.</li>
+<li><strong>Execute o Script:</strong> Pressione "Run Script" para criar o terreno, os objetos, posicionar a câmera e adicionar a luz solar.</li>
+</ol>
+<h3 id="4-testar-no-modo-de-jogo_3">4. Testar no Modo de Jogo</h3>
+<ol>
+<li><strong>Entrar no Modo de Jogo:</strong> Pressione <code>P</code> para entrar no modo de jogo e visualizar o terreno com os objetos sobre ele.</li>
+</ol>
+<h3 id="5-ajustes-finais_3">5. Ajustes Finais</h3>
+<ul>
+<li><strong>Textura do Terreno:</strong> Para um terreno mais realista, você pode adicionar uma textura de solo ao material do plano.</li>
+<li><strong>Tamanho do Plano:</strong> O tamanho do plano pode ser ajustado conforme necessário para cobrir toda a cena.</li>
+</ul>
+<p>Agora, sua cena no UPBGE inclui um terreno básico que serve de base para os objetos.</p>
+<h1 id="adicionar-um-ceu">Adicionar um céu</h1>
+<p>Para adicionar um céu à sua cena no UPBGE, você pode utilizar uma técnica simples chamada "Sky Dome" ou "Sky Sphere". Essa técnica envolve a criação de uma grande esfera ao redor da cena, onde você pode aplicar uma textura de céu. Outra alternativa seria usar o recurso de "World Settings" do Blender para configurar um céu.</p>
+<h3 id="1-adicionando-um-ceu-usando-uma-esfera-sky-dome">1. Adicionando um Céu usando uma Esfera (Sky Dome)</h3>
+<p>Primeiro, vamos adicionar uma esfera invertida como uma "Sky Dome" e aplicar uma textura de céu.</p>
+<h4 id="script-python-modificado-com-sky-dome">Script Python Modificado com Sky Dome:</h4>
+<pre><code class="language-python">import bpy
+import json
+
+# Caminho para o arquivo JSON
+filepath = &quot;/caminho/para/o/arquivo/data.json&quot;
+
+# Função para carregar dados JSON
+def load_json(filepath):
+    with open(filepath, 'r') as file:
+        return json.load(file)
+
+# Função para criar e aplicar um material metálico aos objetos
+def create_metallic_material():
+    material = bpy.data.materials.new(name=&quot;MetallicMaterial&quot;)
+    material.use_nodes = True
+
+    principled_bsdf = material.node_tree.nodes.get(&quot;Principled BSDF&quot;)
+    principled_bsdf.inputs['Metallic'].default_value = 1.0
+    principled_bsdf.inputs['Roughness'].default_value = 0.3
+    principled_bsdf.inputs['Base Color'].default_value = (0.8, 0.8, 0.8, 1)
+
+    return material
+
+# Função para criar objetos a partir dos dados, ajustando altura e aplicando material
+def create_objects_from_data(data, material):
+    objects = []
+    for item in data:
+        bpy.ops.mesh.primitive_cube_add(size=1, location=(item['x'], item['y'], item['z']))
+        obj = bpy.context.object
+
+        obj.name = item['name']
+        obj.scale.z = item['height']
+
+        if obj.data.materials:
+            obj.data.materials[0] = material
+        else:
+            obj.data.materials.append(material)
+
+        objects.append(obj)
+
+    return objects
+
+# Função para criar o terreno
+def create_terrain():
+    bpy.ops.mesh.primitive_plane_add(size=50, location=(0, 0, 0))
+    terrain = bpy.context.object
+
+    terrain_material = bpy.data.materials.new(name=&quot;TerrainMaterial&quot;)
+    terrain_material.use_nodes = True
+
+    principled_bsdf = terrain_material.node_tree.nodes.get(&quot;Principled BSDF&quot;)
+    principled_bsdf.inputs['Base Color'].default_value = (0.3, 0.2, 0.1, 1)  # Marrom
+    principled_bsdf.inputs['Roughness'].default_value = 0.8  # Mais rugoso
+
+    if terrain.data.materials:
+        terrain.data.materials[0] = terrain_material
+    else:
+        terrain.data.materials.append(terrain_material)
+
+    return terrain
+
+# Função para criar o céu (Sky Dome)
+def create_sky_dome():
+    # Criar uma esfera grande para representar o céu
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=100, location=(0, 0, 0))
+    sky_dome = bpy.context.object
+
+    # Inverter as normais para que a esfera seja visível de dentro (Sky Dome)
+    bpy.ops.object.mode_set(mode='EDIT')
+    bpy.ops.mesh.select_all(action='SELECT')
+    bpy.ops.mesh.flip_normals()
+    bpy.ops.object.mode_set(mode='OBJECT')
+
+    # Criar um material para o céu
+    sky_material = bpy.data.materials.new(name=&quot;SkyMaterial&quot;)
+    sky_material.use_nodes = True
+
+    # Adicionar uma textura ao material do céu
+    bsdf = sky_material.node_tree.nodes[&quot;Principled BSDF&quot;]
+    tex_image = sky_material.node_tree.nodes.new('ShaderNodeTexImage')
+
+    # Carregar uma imagem de textura de céu (substitua pelo caminho da sua textura)
+    tex_image.image = bpy.data.images.load(&quot;/caminho/para/sua/textura_de_ceu.jpg&quot;)
+
+    # Conectar a textura ao material
+    sky_material.node_tree.links.new(bsdf.inputs['Base Color'], tex_image.outputs['Color'])
+
+    # Aplicar o material à esfera
+    sky_dome.data.materials.append(sky_material)
+
+    return sky_dome
+
+# Função para posicionar a câmera automaticamente
+def position_camera(objects):
+    x_coords = [obj.location.x for obj in objects]
+    y_coords = [obj.location.y for obj in objects]
+    z_coords = [obj.location.z + obj.scale.z/2 for obj in objects]
+
+    x_center = sum(x_coords) / len(x_coords)
+    y_center = sum(y_coords) / len(y_coords)
+    z_max = max(z_coords)
+
+    camera = bpy.data.objects['Camera']
+    camera.location.x = x_center
+    camera.location.y = y_center - max(y_coords) * 2
+    camera.location.z = z_max * 1.5
+
+    camera.rotation_euler = (1.1, 0, 0)
+    camera.data.lens = 35
+
+# Função para adicionar uma luz solar (Sun)
+def add_sun_light():
+    bpy.ops.object.light_add(type='SUN', radius=1, location=(10, -10, 10))
+    sun = bpy.context.object
+
+    sun.rotation_euler = (0.7854, 0, 0.7854)
+    sun.data.energy = 5
+    sun.data.color = (1, 1, 0.98)
+
+# Carregar dados e criar material metálico
+data = load_json(filepath)
+metallic_material = create_metallic_material()
+
+# Criar o terreno
+terrain = create_terrain()
+
+# Criar o céu (Sky Dome)
+sky_dome = create_sky_dome()
+
+# Criar objetos e aplicar o material metálico
+objects = create_objects_from_data(data, metallic_material)
+
+# Posicionar a câmera com base nos objetos
+position_camera(objects)
+
+# Adicionar uma luz solar à cena
+add_sun_light()
+</code></pre>
+<h3 id="2-explicacao-das-modificacoes_3">2. Explicação das Modificações:</h3>
+<ul>
+<li><strong>Função <code>create_sky_dome</code>:</strong> Esta função cria uma esfera grande (<code>radius=100</code>) que representa o céu ao redor da cena.</li>
+<li><strong>Inversão das Normais:</strong> As normais da esfera são invertidas para que a superfície interna seja visível, criando um efeito de "Sky Dome".</li>
+<li><strong>Material do Céu:</strong> Um material é criado e uma textura de céu é aplicada a ele.</li>
+<li><strong>Textura de Céu:</strong> Substitua <code>"/caminho/para/sua/textura_de_ceu.jpg"</code> pelo caminho da sua textura de céu.</li>
+</ul>
+<h3 id="3-usar-world-settings-para-configurar-o-ceu-alternativa">3. Usar World Settings para Configurar o Céu (Alternativa)</h3>
+<p>Se preferir usar o "World Settings" do Blender, aqui está como você pode configurar:</p>
+<ol>
+<li><strong>Criar um Mundo:</strong> Em vez de adicionar um Sky Dome, você pode configurar o céu diretamente no "World Settings".</li>
+<li><strong>Adicionar um Background:</strong> No painel de "World", selecione <code>Use Nodes</code> e configure o <code>Background</code> para um tom de azul ou adicione uma textura de céu.</li>
+</ol>
+<h3 id="4-executar-o-script_1">4. Executar o Script</h3>
+<ol>
+<li><strong>Abra o Editor de Texto:</strong> No UPBGE, abra o Editor de Texto e cole o script modificado.</li>
+<li><strong>Execute o Script:</strong> Pressione "Run Script" para criar o céu, o terreno, os objetos, posicionar a câmera e adicionar a luz solar.</li>
+</ol>
+<h3 id="5-testar-no-modo-de-jogo">5. Testar no Modo de Jogo</h3>
+<ol>
+<li><strong>Entrar no Modo de Jogo:</strong> Pressione <code>P</code> para entrar no modo de jogo e visualizar o céu ao redor da sua cena.</li>
+</ol>
+<p>Agora, sua cena 3D no UPBGE inclui um céu usando um "Sky Dome" ou configurando o "World Settings".</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
