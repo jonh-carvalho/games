@@ -1,2 +1,2 @@
-* [Upbge](/docs/Exemplos/importdata.zip)
-* [Blender](/docs/Exemplos/blenderphysics.zip)
+* [Upbge](/assets/Exemplos/importdata.zip)
+* [Blender](/assets/Exemplos/blenderphysics.zip)
